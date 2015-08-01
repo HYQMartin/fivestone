@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+{{template "head"}}
+<body>
+{{template "navbar" .}}
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">选择桌子</div>
+  <div class="panel-body">
+    <button type="button" class="btn btn-success btn-lg" onclick="return backToChooseRoom()">返回</button>
+     <script type="text/javascript">
+                function backToChooseRoom() {
+                  window.location.href = "/Wuziqi/PVP/ChooseRoom";
+                  return false;
+                }
+  	</script>
+    <p>请选择桌子进入不同房间。</p>
+ <div class="container">
+				<a href="/Wuziqi/PVP1?desknum=1"><img src="/static/img/desk_1.png"></a>	
+				<a href="/Wuziqi/PVP1?desknum=2"><img src="/static/img/desk_2.png"></a>
+				<a href="/Wuziqi/PVP1?desknum=3"><img src="/static/img/desk_3.png"></a>
+				<a href="/Wuziqi/PVP1?desknum=4"><img src="/static/img/desk_4.png"></a>
+				<a href="/Wuziqi/PVP1?desknum=5"><img src="/static/img/desk_5.png"></a>		
+  </div>
+  <br> </br>
+   <div class="container">
+				<a href="/Wuziqi/PVP1?desknum=6"><img src="/static/img/desk_6.png"></a>
+				<a href="/Wuziqi/PVP1?desknum=7"><img src="/static/img/desk_7.png"></a>
+				<a href="/Wuziqi/PVP1?desknum=8"><img src="/static/img/desk_8.png"></a>
+				<a href="/Wuziqi/PVP1?desknum=9"><img src="/static/img/desk_9.png"></a>
+				<a href="/Wuziqi/PVP1?desknum=10"><img src="/static/img/desk_10.png"></a>
+
+
+  </div>
+  </div>
+<!-- Table -->
+  
+
+  <div>
+  <div class="container">
+				<img src="/static/img/yfei.jpg">
+  </div>
+  </div>
+
+</div>
+
+
+		
+
+<div><h5 align="middle">现在时间：{{.Time}}</h5></div>
+<div><h5 align="middle">开发者：{{.Author}}</h5></div>
+		<script type="text/javascript" src="http://cdn.staticfile.org/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+	</body>
+</html>

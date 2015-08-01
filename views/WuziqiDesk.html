@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>THWL-FiveStone</title>
+		<link rel="shortcut icon" href="/static/img/lyf.png" />
+    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+		 <!-- Stylesheets -->
+		<link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+		<!--link rel="stylesheet" type="text/css" href="/static/css/reset.css"-->
+	<script type="text/javascript" src="/static/js/CookieHandle.js"></script>
+	<script type="text/javascript" src="/static/js/jquery-1.7.2.js"></script>
+</head>
+<body>
+{{template "navbar" .}}
+		<!--div>
+		<h1><p align="middle"><span class="label label-primary">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp这是第{{.Count}}盘五子棋&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</span></p></h1>
+		</div-->
+		<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">五子棋对战规则</div>
+  <div class="panel-body">
+    <p>点击选择颜色按钮或者白色按钮先会切换成黑色，再点击黑色按钮会切换成白色。</p>
+  </div>
+<!-- Table -->
+<div class="pull-left">
+<button type="button" class="btn btn-success btn-lg"><a href="/Wuziqi/PVP/ChooseDesk">返回</a></button>
+</div>
+  <div><p align="middle">
+  <button type="button" class="btn btn-info btn-lg"><a class="label" href="{{.SelectColor}}"> {{.Color_Chiness}} </a></button>
+  <button type="button" class="btn btn-success btn-lg" onclick="regreat()">悔棋</button>
+  <button type="button" class="btn btn-danger btn-lg" onclick="newGame()"> 新一局</button>
+  </p>
+ </div>
+<div class="wrapper">
+	<div class="chessboard">
+		<!-- top line -->
+		<div class="chess-top"></div>
+		<div class="chess-top"></div>
+		<div class="chess-top"></div>
+		<div class="chess-top"></div>
+		<div class="chess-top"></div>
+		<div class="chess-top"></div>
+		<div class="chess-top"></div>
+		<div class="chess-top"></div>
+		<div class="chess-top"></div>
+		<div class="chess-top"></div>
+		<div class="chess-top"></div>
+		<div class="chess-top"></div>
+		<div class="chess-top"></div>
+		<div class="chess-top"></div>
+		<div class="chess-top chess-right"></div>
+		<!-- line 1 -->
+		<div class="chess-left"></div>		
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-right"></div>
+		<!-- line 2 -->
+		<div class="chess-left"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-right"></div>
+		<!-- line 3 -->
+		<div class="chess-left"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-right"></div>
+		<!-- line 4 -->
+		<div class="chess-left"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-right"></div>
+		<!-- line 5 -->
+		<!--div><h1 > <p align="right">{{.Winn}} </p></h1></div-->
+		<div class="chess-left"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-right"></div>
+		<!-- line 6 -->
+		<div class="chess-left"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-right"></div>
+		<!-- line 7 -->
+		<div class="chess-left"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-right"></div>
+		<!-- line 8 -->
+		<div class="chess-left"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-right"></div>
+		<!-- line 9 -->
+		<div class="chess-left"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-right"></div>
+		<!-- line 10 -->
+		<div class="chess-left"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-right"></div>
+		<!-- line 11 -->
+		<div class="chess-left"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-right"></div>
+		<!-- line 12 -->
+		<div class="chess-left"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-right"></div>
+		<!-- line 13 -->
+		<div class="chess-left"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-middle"></div>
+		<div class="chess-right"></div>
+		<!-- bottom line  -->
+		<div class="chess-bottom"></div>
+		<div class="chess-bottom"></div>
+		<div class="chess-bottom"></div>
+		<div class="chess-bottom"></div>
+		<div class="chess-bottom"></div>
+		<div class="chess-bottom"></div>
+		<div class="chess-bottom"></div>
+		<div class="chess-bottom"></div>
+		<div class="chess-bottom"></div>
+		<div class="chess-bottom"></div>
+		<div class="chess-bottom"></div>
+		<div class="chess-bottom"></div>
+		<div class="chess-bottom"></div>
+		<div class="chess-bottom"></div>
+		<!--h1><p align="right"><a class="label label-success" href="/Wuziqi/PVP?people=black">白色</a></p></h1 -->
+	<!--/div>	
+		<h1><p align="middle"><a class="label label-success" href="/Wuziqi/PVP/{{.OtherStoneColor}}"> {{.Color_Chiness}} </a></p></h1>
+		<h1><p align="middle"><a class="label label-success" href="/Wuziqi/PVP?regreat=1"> 悔棋 </a></p></h1>
+		<h1><p align="middle"><a class="label label-success" href="/Wuziqi/PVP/{{.StoneColor}}?new=1"> 新一局 </a></p></h1>
+		<p align="middle">请点击新一局后选择颜色就可以开始，点击黑色/白色按钮可以切换颜色</p>
+</div-->
+
+
+</body>
+</html>
+    	<style>.wrapper {
+	width: 600px;
+	margin:0 auto;
+}
+
+/* 棋盘 */
+div.chessboard {
+	margin: 30px auto;
+	padding:12px 14px 16px 14px;
+	width: 570px;
+	height: 570px;
+	background: url(/static/img/chessboard.jpg) no-repeat;
+	overflow: hidden;
+	/* 无须阴影，暂时删去。by Tt
+	box-shadow: 2px 2px 8px #888;
+	-webkit-box-shadow: 2px 2px 8px #888;
+	-moz-box-shadow: 2px 2px 8px #888;
+	*/
+}
+
+div.chessboard div {
+	float: left;
+	width: 36px;
+	height: 36px;
+	border-top: 0px solid #ccc;
+	border-left: 0px solid #ccc;
+	border-right: 0;
+	border-bottom: 0;
+	cursor: pointer;
+}
+
+/* 棋子 */
+div.chessboard div.black {
+	background: url(/static/img/black.png) no-repeat 2px 2px;
+}
+div.chessboard div.white {
+	background: url(/static/img/white.png) no-repeat 2px 2px;
+}
+div.chessboard div.hover {
+	background: url(/static/img/hover.png) no-repeat 1px 1px;
+}
+div.chessboard div.hover-up {
+	background: url(/static/img/hover.png) no-repeat 1px 1px;
+}
+div.chessboard div.hover-down {
+	background: url(/static/img/hover.png) no-repeat 1px 1px;
+}
+div.chessboard div.hover-up-left {
+	background: url(/static/img/hover.png) no-repeat 1px 1px;
+}
+div.chessboard div.hover-up-right {
+	background: url(/static/img/hover.png) no-repeat 1px 1px;
+}
+div.chessboard div.hover-left {
+	background: url(/static/img/hover.png) no-repeat 1px 1px;
+}
+div.chessboard div.hover-right {
+	background: url(/static/img/hover.png) no-repeat 1px 1px;
+}
+div.chessboard div.hover-down-left {
+	background: url(/static/img/hover.png) no-repeat 1px 1px;
+}
+div.chessboard div.hover-down-right {
+	background: url(/static/img/hover.png) no-repeat 1px 1px;
+}
+div.chessboard div.white-last {
+	background: url(/static/img/white_last.png) no-repeat 2px 2px;
+}
+div.chessboard div.black-last {
+	background: url(/static/img/black_last.png) no-repeat 2px 2px;
+}
+
+/* 右侧 */
+
+div.operating-panel {
+	position: absolute;
+	left: 610px;
+	top: 150px;
+	width: 200px;
+	text-align: center;
+}
+
+.operating-panel a {
+	display: inline-block;
+	padding: 10px 15px;
+	margin-bottom: 39px;
+	margin-right: 8px;
+	margin-left: 8px;
+	background: rgb(100, 167, 233);
+	text-decoration: none;
+	color: #333;
+	font-weight: bold;
+	font-size: 16px;
+	font-family: "微软雅黑", "宋体";
+}
+
+.operating-panel a:hover {
+	background: rgb(48, 148, 247);
+	text-decoration: none;
+}
+
+.operating-panel a.disable, .operating-panel a.disable:hover {
+	cursor: default;
+	background: rgb(197, 203, 209);
+	color: rgb(130, 139, 148);
+}
+
+.operating-panel a.selected {
+	border: 5px solid #F3C242;
+	padding: 5px 10px;
+}
+
+#result_tips {
+	color: #CE4242;
+	font-size: 26px;
+	font-family: "微软雅黑";
+}
+
+#result_info {
+	margin-bottom: 26px;
+}</style>
+	    		
+<script>$(document).ready(function() {
+	fiveChess.init();
+});
+
+function regreat() {
+			$.ajax({
+				url:"/Wuziqi/PVP1",
+				cache:false,
+				data:{"regreat":1,num:{{.DeskNum}}},
+				dataType:"json",
+				type:'GET',
+				success:function(data) {
+				},
+				error:function() {
+				}
+			});
+}
+function newGame() {
+			$.ajax({
+				url:"/Wuziqi/PVP1",
+				cache:false,
+				data:{"new":1,"num":{{.DeskNum}}},
+				dataType:"json",
+				type:'GET',
+				success:function(data) {
+				},
+				error:function() {
+				}
+			});
+}
+function flushChess() {
+			$.ajax({
+				url:"/Wuziqi/PVP/getall1",
+				cache:false,
+				data:{color:{{.StoneColor}},num:{{.DeskNum}}},
+				dataType:"json",
+				type:'GET',
+				success:function(data) {
+				if (data["flush"]==="yes") {//开始新的一句，则刷新棋盘上所有棋子
+					$("div.chessboard div." + "white" + "-last").addClass("white").removeClass("white" + "-last");
+					$("div.chessboard div." + "black" + "-last").addClass("black").removeClass("black" + "-last");
+					$("div.chessboard div." + "white" ).removeClass("white");
+					$("div.chessboard div." + "black").removeClass("black");
+					var ii,jj;
+					var ddd=new Array();					
+					for( ii=0;ii<15;ii++){//初始化
+						ddd[ii]=new Array();
+					for( jj=0;jj<15;jj++){
+						ddd[ii][jj]=0;
+					}
+					}
+					fiveChess.chessArr=ddd;
+					fiveChess.flushChesses(ddd);
+					fiveChess.isGameOver=false;
+					fiveChess.black_over=false;
+					fiveChess.white_over=false;
+					return;
+				};
+				if (data["flush"]==="no") {//当有一方胜利的时候，则显示胜利的棋子
+					fiveChess.LastChess=data["last"];
+					fiveChess.showWinChesses();
+					fiveChess.isGameOver=true;
+					return;
+				};
+				var l;
+				l=data["len"]
+				if (l===0) {return;};
+				var dd=new Array();
+				var i,j,k;
+				for( i=0;i<15;i++){//初始化
+					dd[i]=new Array();
+					for( j=0;j<15;j++){
+						dd[i][j]=0;
+					}
+				}
+				for( k=1;k<=l;k++){//存已经下的棋子
+					var one;
+					one=data[k];
+					dd[one[0]][one[1]]=one[2];
+				}
+				fiveChess.chessArr=dd;
+				fiveChess.flushChesses(dd);
+				las=data[l];
+				fiveChess.LastChess=las;
+				var color;
+				if (las[2]===1) {color="white";};
+				if (las[2]===-1) {color="black";};//显示最后下的棋子带last
+					$("div.chessboard div." + "white" + "-last").addClass("white").removeClass("white" + "-last");
+					$("div.chessboard div." + "black" + "-last").addClass("black").removeClass("black" + "-last");
+					$("div.chessboard div:eq(" + (las[0] * 15 + las[1]) + ")").addClass(color + "-last");
+				},
+				error:function() {
+				}
+			});
+}
+var fiveChess = {
+	NO_CHESS: 0,
+	BLACK_CHESS: -1,
+	WHITE_CHESS: 1,
+	chessArr: {{.ChessArr}},	//记录棋子
+	totalGames: cookieHandle.getCookie("totalGames") || 0,	//总局数
+//	isGameStart: false,	//游戏已经开始
+	isGameOver: false, //游戏结束
+	playerLastChess: [], //玩家最后下子位置
+	//AILastChess: [], //AI最后下子位置
+	CanNewOne:false,
+	LastChess:[],
+	black_over:false,
+	white_over:false,
+	init: function () {
+		var _fiveChess = this; 
+		timename=setInterval('flushChess()',500);
+		this.resetChessBoard();
+	},
+	//重置棋盘
+	resetChessBoard: function () {
+		//var _fiveChess.chessArr = this.chessArr;
+		this.isGameOver = false;
+		//初始化棋子状态
+		var i, j;
+		this.showChess();
+		//player下棋事件
+		var _fiveChess = this;
+		$("div.chessboard div").click(function () {
+			if (_fiveChess.isGameOver) {
+				return;
+			}
+		/*	if (!_fiveChess.isGameStart) {
+						this.isGameStart = true;
+			}*/
+			var index = $(this).index(),
+				i = index / 15 | 0,
+				j = index % 15;
+			if (fiveChess.chessArr[i][j] === _fiveChess.NO_CHESS) {
+				var thisone=this;
+				$.get(  
+  					"/Wuziqi/PVP/save1?iam={{.StoneColor}}{{.DeskNum}}&x="+i+"&y="+j,{},function(data,state){  
+  				if (data==="yes") {
+  										$(thisone).removeClass("hover");
+  							_fiveChess.playChess(i, j,{{.StoneColor}});
+				$(this).removeClass("hover");
+				_fiveChess.playerLastChess = [i, j];
+				_fiveChess.playerWinOrNot(i, j);
+				};
+ 				}) 
+			}
+		});
+		//鼠标在棋盘上移动效果
+		$("div.chessboard div").hover(
+			function () {
+				if ( _fiveChess.isGameOver) { return; }
+				var index = $(this).index(),
+					i = index / 15 | 0,
+					j = index % 15;
+				if (fiveChess.chessArr[i][j] === _fiveChess.NO_CHESS) {
+					$(this).addClass("hover");
+				}
+			},
+			function () {
+				if ( _fiveChess.isGameOver) { return; }
+				var index = $(this).index(),
+					i = index / 15 | 0,
+					j = index % 15;
+					$(this).removeClass("hover");
+			}
+		);
+	},
+	//下棋 i行，j列，color颜色
+	playChess: function (i, j, color) {
+		this.chessArr[i][j] = color === "black" ? this.BLACK_CHESS : this.WHITE_CHESS;
+		$("div.chessboard div:eq(" + (i * 15 + j) + ")").addClass(color);
+	},
+	showChess: function () {
+		var i,j;
+		var color;
+		var chess={{.ChessArr}};
+			for (i = 0; i < 15; i++) {
+			for (j = 0; j < 15; j++) {
+				if (chess[i][j]===1) {color="white";};
+				if (chess[i][j]===-1) {color="black";};
+				if (chess[i][j]===0) {
+					$("div.chessboard div:eq(" + (i * 15 + j) + ")").removeClass(color);
+				}else{
+					$("div.chessboard div:eq(" + (i * 15 + j) + ")").addClass(color);
+				}
+			}
+			}
+	},
+	flushChesses: function (data) {
+		var i,j;
+		var color;
+		var chess=data;
+			for (i = 0; i < 15; i++) {
+			for (j = 0; j < 15; j++) {
+				if (chess[i][j]===1) {color="white";};
+				if (chess[i][j]===-1) {color="black";};
+				if (chess[i][j]===0) {
+						$("div.chessboard div:eq(" + (i * 15 + j) + ")");
+						$("div.chessboard div:eq(" + (i * 15 + j) + ")").removeClass("white");
+						$("div.chessboard div:eq(" + (i * 15 + j) + ")").removeClass("black");
+				}else{
+						$("div.chessboard div:eq(" + (i * 15 + j) + ")").addClass(color);
+				}
+			}
+			}
+		
+	},
+	//玩家是否取胜
+	playerWinOrNot: function (i, j) {
+		var nums = 1,	//连续棋子个数
+			chessColor = {{.StoneColor}} ==="black" ? this.BLACK_CHESS : this.WHITE_CHESS,
+			m, n;
+		//x方向
+		for (m = j - 1; m >= 0; m--) {
+			if (this.chessArr[i][m] === chessColor) {
+				nums++;
+			}
+			else {
+				break;
+			}
+		}
+		for (m = j + 1; m < 15; m++) {
+			if (this.chessArr[i][m] === chessColor) {
+				nums++;
+			}
+			else {
+				break;
+			}
+		}
+		if (nums >= 5) {
+			this.playerWin();
+			return;
+		}
+		else {
+			nums = 1;
+		}
+		//y方向
+		for (m = i - 1; m >= 0; m--) {
+			if (this.chessArr[m][j] === chessColor) {
+				nums++;
+			}
+			else {
+				break;
+			}
+		}
+		for (m = i + 1; m < 15; m++) {
+			if (this.chessArr[m][j] === chessColor) {
+				nums++;
+			}
+			else {
+				break;
+			}
+		}
+		if (nums >= 5) {
+			this.playerWin();
+			return;
+		}
+		else {
+			nums = 1;
+		}
+		//左斜方向
+		for (m = i - 1, n = j - 1; m >= 0 && n >= 0; m--, n--) {
+			if (this.chessArr[m][n] === chessColor) {
+				nums++;
+			}
+			else {
+				break;
+			}
+		}
+		for (m = i + 1, n = j + 1; m < 15 && n < 15; m++, n++) {
+			if (this.chessArr[m][n] === chessColor) {
+				nums++;
+			}
+			else {
+				break;
+			}
+		}
+		if (nums >= 5) {
+			this.playerWin();
+			return;
+		}
+		else {
+			nums = 1;
+		}
+		//右斜方向
+		for (m = i - 1, n = j + 1; m >= 0 && n < 15; m--, n++) {
+			if (this.chessArr[m][n] === chessColor) {
+				nums++;
+			}
+			else {
+				break;
+			}
+		}
+		for (m = i + 1, n = j - 1; m < 15 && n >= 0; m++, n--) {
+			if (this.chessArr[m][n] === chessColor) {
+				nums++;
+			}
+			else {
+				break;
+			}
+		}
+		if (nums >= 5) {
+			this.playerWin();
+			return;
+		}
+	},
+	playerWin: function () {
+		//cookieHandle.setCookie({ name: "winGames", value: this.winGames, expiresHours: 365 * 24 });
+		$.get("/Wuziqi/PVP/save1?win={{.StoneColor}}&num={{.DeskNum}}",{});
+		this.isGameOver = true;
+		//this.isGameStart = false;
+	},
+	//标记显示获胜棋子
+	showWinChesses: function () {
+		var nums = 1,	//连续棋子个数
+			lineChess = [],	//连续棋子位置
+			i,
+			j,
+			chessColor,
+			m, n;
+		i=this.LastChess[0];
+		j=this.LastChess[1];
+		chessColor=this.LastChess[2];
+		if (chessColor===1) {
+			var cs="white";
+			if (fiveChess.white_over===false) {
+			if (cs==={{.StoneColor}} ) {
+				$.ajax({
+					url:"/Wuziqi/PVP1",
+					cache:false,
+					data:{"over":"winner"},
+					dataType:"json",
+					type:'GET',
+					success:function(data) {
+					},
+					error:function() {
+					}
+				});
+			}else{
+				$.ajax({
+					url:"/Wuziqi/PVP1",
+					cache:false,
+					data:{"over":"loser"},
+					dataType:"json",
+					type:'GET',
+					success:function(data) {
+					},
+					error:function() {
+					}
+				});
+			};
+			};
+			fiveChess.white_over=true;
+		}else{
+			var cs="black";
+			if (fiveChess.black_over===false) {
+		if (cs==={{.StoneColor}} ) {
+			$.ajax({
+				url:"/Wuziqi/PVP1",
+				cache:false,
+				data:{"over":"winner"},
+				dataType:"json",
+				type:'GET',
+				success:function(data) {
+				},
+				error:function() {
+				}
+			});
+		}else{
+			$.ajax({
+				url:"/Wuziqi/PVP1",
+				cache:false,
+				data:{"over":"loser"},
+				dataType:"json",
+				type:'GET',
+				success:function(data) {
+				},
+				error:function() {
+				}
+			});
+		};};
+		fiveChess.black_over=true;
+		};
+
+		$("div.chessboard div." +"white"+ "-last").addClass("white").removeClass("white" + "-last");
+
+		$("div.chessboard div." +"black" + "-last").addClass("black").removeClass("black" + "-last");
+		//x方向
+		lineChess[0] = [i];
+		lineChess[1] = [j];
+		for (m = j - 1; m >= 0; m--) {
+			if (this.chessArr[i][m] === chessColor) {
+				lineChess[0][nums] = i;
+				lineChess[1][nums] = m;
+				nums++;
+			}
+			else {
+				break;
+			}
+		}
+		for (m = j + 1; m < 15; m++) {
+			if (this.chessArr[i][m] === chessColor) {
+				lineChess[0][nums] = i;
+				lineChess[1][nums] = m;
+				nums++;
+			}
+			else {
+				break;
+			}
+		}
+		if (nums >= 5) {
+			for (k = nums - 1; k >= 0; k--) {
+				this.markChess(lineChess[0][k] * 15 + lineChess[1][k], chessColor===1 ? "white" : "black");
+			}
+			return;
+		}
+		//y方向
+		nums = 1;
+		lineChess[0] = [i];
+		lineChess[1] = [j];
+		for (m = i - 1; m >= 0; m--) {
+			if (this.chessArr[m][j] === chessColor) {
+				lineChess[0][nums] = m;
+				lineChess[1][nums] = j;
+				nums++;
+			}
+			else {
+				break;
+			}
+		}
+		for (m = i + 1; m < 15; m++) {
+			if (this.chessArr[m][j] === chessColor) {
+				lineChess[0][nums] = m;
+				lineChess[1][nums] = j;
+				nums++;
+			}
+			else {
+				break;
+			}
+		}
+		if (nums >= 5) {
+			for (k = nums - 1; k >= 0; k--) {
+				this.markChess(lineChess[0][k] * 15 + lineChess[1][k], chessColor===1 ? "white" : "black");
+			}
+			return;
+		}
+		//左斜方向
+		nums = 1;
+		lineChess[0] = [i];
+		lineChess[1] = [j];
+		for (m = i - 1, n = j - 1; m >= 0 && n >= 0; m--, n--) {
+			if (this.chessArr[m][n] === chessColor) {
+				lineChess[0][nums] = m;
+				lineChess[1][nums] = n;
+				nums++;
+			}
+			else {
+				break;
+			}
+		}
+		for (m = i + 1, n = j + 1; m < 15 && n < 15; m++, n++) {
+			if (this.chessArr[m][n] === chessColor) {
+				lineChess[0][nums] = m;
+				lineChess[1][nums] = n;
+				nums++;
+			}
+			else {
+				break;
+			}
+		}
+		if (nums >= 5) {
+			for (k = nums - 1; k >= 0; k--) {
+				this.markChess(lineChess[0][k] * 15 + lineChess[1][k], chessColor===1 ? "white" : "black");
+			}
+			return;
+		}
+		//右斜方向
+		nums = 1;
+		lineChess[0] = [i];
+		lineChess[1] = [j];
+		for (m = i - 1, n = j + 1; m >= 0 && n < 15; m--, n++) {
+			if (this.chessArr[m][n] === chessColor) {
+				lineChess[0][nums] = m;
+				lineChess[1][nums] = n;
+				nums++;
+			}
+			else {
+				break;
+			}
+		}
+		for (m = i + 1, n = j - 1; m < 15 && n >= 0; m++, n--) {
+			if (this.chessArr[m][n] === chessColor) {
+				lineChess[0][nums] = m;
+				lineChess[1][nums] = n;
+				nums++;
+			}
+			else {
+				break;
+			}
+		}
+		if (nums >= 5) {
+			for (k = nums - 1; k >= 0; k--) {
+			this.markChess(lineChess[0][k] * 15 + lineChess[1][k], chessColor===1 ? "white" : "black");
+			}
+		}
+	},
+	markChess: function (pos, color) {
+		$("div.chessboard div:eq(" + pos + ")").removeClass(color).addClass(color + "-last");
+	},
+};
+
+/*$.ajax({
+				url:"check/verify",
+				cache:false,
+				data:{phone:phone,check:'check',type:type},
+				dataType:'text',
+				type:'POST',
+				success:function(data) {
+					if(data == 'phonefalse'){
+						 send = true;
+						msg_alert('输入的手机号码格式不正确！')
+						return;
+						}
+					if(data == 'false'){
+						 send = true;
+						msg_alert('服务器繁忙，短信发送失败！')
+						return;
+						}
+					if(data=="timeno"){
+						 send = true;
+						msg_alert('不能频繁获取验证码！');
+						return;
+						}
+					send = true;
+					sendState = false;
+					fun_timedown(120);
+				},
+				error:function() {
+					send = true;
+					msg_alert('服务器繁忙，短信发送失败！')
+				}
+		
+			});*/
+			</script>
+<div style="text-align:center;clear:both"><br><br>
+<p>来源：<a href="http://localhost:8080/THWL" target="_blank">THWL战队</a></p>
+</div>
+
