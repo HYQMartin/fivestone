@@ -73,7 +73,7 @@ func (t *WuziqiPVPB1Controller) Get() {
 	t.Data["IsLogin"] = CheckAccount(t.Ctx)
 	t.Data["ChessArr"] = GetChessArr_Desk(desknum)
 	t.Data["IsWuziqiPVP"] = true
-	t.TplNames = "WuziqiDesk.html"
+	t.TplName = "WuziqiDesk.html"
 	return
 }
 
@@ -98,6 +98,6 @@ func (t *WuziqiPVPW1Controller) Get() {
 		t.Data["UserName"] = name
 	}
 
-	t.TplNames = "WuziqiDesk.html"
+	t.TplName = "WuziqiDesk.html"
 	return
 }

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"beego/wuziqi/models"
-	_ "beego/wuziqi/routers"
+	"fivestone/models"
+	_ "fivestone/routers"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 )

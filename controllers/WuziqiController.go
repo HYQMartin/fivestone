@@ -20,7 +20,7 @@ func (t *WuziqiController) Get() {
 		t.Data["UserName"] = name
 	}
 
-	t.TplNames = "Wuziqi.html"
+	t.TplName = "Wuziqi.html"
 }
 
 var TotalGame map[string]OneGame
@@ -118,7 +118,7 @@ func (t *WuziqiPVPController) Get() {
 		t.Data["UserName"] = name
 	}
 
-	t.TplNames = "WuziqiPVP.html"
+	t.TplName = "WuziqiPVP.html"
 }
 
 type WuziqiPVPBController struct {
@@ -144,7 +144,7 @@ func (t *WuziqiPVPBController) Get() {
 		t.Data["UserName"] = name
 	}
 
-	t.TplNames = "WuziqiPVP.html"
+	t.TplName = "WuziqiPVP.html"
 }
 
 type WuziqiPVPWController struct {
@@ -170,7 +170,7 @@ func (t *WuziqiPVPWController) Get() {
 		t.Data["UserName"] = name
 	}
 
-	t.TplNames = "WuziqiPVP.html"
+	t.TplName = "WuziqiPVP.html"
 }
 
 type WuziqiPVPGController struct {

@@ -3,7 +3,7 @@ package models
 import (
 	"fmt"
 	"github.com/astaxie/beego/orm"
-	_ "mysql"
+	_ "github.com/go-sql-driver/mysql"
 	//"strconv"
 )
 
@@ -22,7 +22,7 @@ type User struct {
 func RegistDB() {
 	//regist model
 	orm.RegisterModel(new(User))
-	orm.RegisterDriver("mysql", orm.DR_MySQL)
+	orm.RegisterDriver("mysql", orm.DRMySQL)
 	orm.RegisterDataBase("default", "mysql", "gobang:123456@/gobang?charset=utf8", 30, 30)
 }
 

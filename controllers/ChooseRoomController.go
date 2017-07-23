@@ -17,5 +17,5 @@ func (t *ChooseRoomController) Get() {
 	}
 
 	t.Data["IsLogin"] = CheckAccount(t.Ctx)
-	t.TplNames = "ChooseRoom.html"
+	t.TplName = "ChooseRoom.html"
 }

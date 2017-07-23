@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"beego/wuziqi/models"
+	"fivestone/models"
 	"encoding/json"
 	"fmt"
 	"github.com/astaxie/beego"
@@ -22,7 +22,7 @@ func (t *LoginController) Get() {
 		return
 	}
 	t.Data["IsLogin"] = CheckAccount(t.Ctx)
-	t.TplNames = "Login.html"
+	t.TplName = "Login.html"
 	return
 }
 func (t *LoginController) Post() {
@@ -39,7 +39,7 @@ func (t *LoginController) Post() {
 	t.Ctx.SetCookie("name", name, maxAge, "/")
 	t.Ctx.SetCookie("pwd", pwd, maxAge, "/")
 	if isright {
-		t.TplNames = "Home.html"
+		t.TplName = "Home.html"
 		/*t.Data["Author"] = "叶青，子龙"
 		t.Data["Time"] = time.Now().Format(time.Stamp)
 		t.Data["IsHome"] = true
@@ -53,7 +53,7 @@ func (t *LoginController) Post() {
 		t.Data["UserName"] = aname
 	}
 
-	t.TplNames = "Login.html"
+	t.TplName = "Login.html"
 	return
 }
 func CheckAccount(t *context.Context) bool {
@@ -85,7 +85,7 @@ func (t *RegistController) Get() {
 		t.Data["UserName"] = name
 	}
 
-	t.TplNames = "Regist.html"
+	t.TplName = "Regist.html"
 	return
 }
 func (t *RegistController) Post() {

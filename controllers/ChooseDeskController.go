@@ -17,5 +17,5 @@ func (t *ChooseDeskController) Get() {
 	}
 
 	t.Data["IsLogin"] = CheckAccount(t.Ctx)
-	t.TplNames = "ChooseDesk.html"
+	t.TplName = "ChooseDesk.html"
 }

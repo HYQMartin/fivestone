@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"beego/wuziqi/controllers"
+	"fivestone/controllers"
 	"github.com/astaxie/beego"
 )
 

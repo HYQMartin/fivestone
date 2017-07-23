@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"beego/wuziqi/models"
+	"fivestone/models"
 	"github.com/astaxie/beego"
 )
 
@@ -21,5 +21,5 @@ func (t *ResultController) Get() {
 	if err != nil {
 		beego.Error(err)
 	}
-	t.TplNames = "Result.html"
+	t.TplName = "Result.html"
 }

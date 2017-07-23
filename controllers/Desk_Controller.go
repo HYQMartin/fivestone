@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"beego/wuziqi/models"
+	"fivestone/models"
 	"encoding/json"
 	"fmt"
 	"github.com/astaxie/beego"
@@ -70,7 +70,7 @@ func (t *WuziqiPVP1Controller) Get() {
 		t.Data["UserName"] = name
 	}
 
-	t.TplNames = "WuziqiDesk.html"
+	t.TplName = "WuziqiDesk.html"
 }
 
 //var TotalGame map[string]OneGame

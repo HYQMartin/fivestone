@@ -18,5 +18,5 @@ func (t *MatchingRoomController) Get() {
 		t.Data["UserName"] = name
 	}
 
-	t.TplNames = "MatchingRoom.html"
+	t.TplName = "MatchingRoom.html"
 }

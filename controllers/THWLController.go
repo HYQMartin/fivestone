@@ -17,5 +17,5 @@ func (t *THWLController) Get() {
 		t.Data["UserName"] = name
 	}
 
-	t.TplNames = "THWL.html"
+	t.TplName = "THWL.html"
 }

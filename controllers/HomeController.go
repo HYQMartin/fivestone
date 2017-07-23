@@ -42,7 +42,7 @@ func (c *MainController) Get() {
 	}
 
 	c.Data["IsLogin"] = CheckAccount(c.Ctx)
-	c.TplNames = "Home.html"
+	c.TplName = "Home.html"
 
 }
 
@@ -51,7 +51,7 @@ type FirstController struct {
 }
 
 func (c *FirstController) Get() {
-	c.TplNames = "Home.html"
+	c.TplName = "Home.html"
 	c.Data["FirstStep"] = `
 			<div align="middle">
 				<nav>
@@ -125,6 +125,6 @@ func (c *SecondController) Get() {
 	c.Data["Author"] = "叶青，子龙"
 	c.Data["Time"] = time.Now().Format(time.Stamp)
 	c.Data["IsHome"] = true
-	c.TplNames = "Home.html"
+	c.TplName = "Home.html"
 
 }
